@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quizs — Official Documentation & Setup Guide | Arknox</title>
+  <meta name="description" content="Official step-by-step installation, server deployment, admin panel customization, and mobile app configuration guide for Quizs by Arknox.">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/guide.css">
+  <link rel="stylesheet" href="assets/css/pdf-reader.css">
+  <link rel="icon" type="image/png" href="assets/images/quizs_logo.png">
+  <style>
+    /* Premium UI Card Styles for Quizs Admin Walkthrough */
+    .admin-form-mock {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin: 20px 0;
+      box-shadow: var(--shadow-sm);
+    }
+    .form-header-mock {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+    }
+    .form-header-mock h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .form-group-mock {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-group-mock label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+    .form-group-mock .field-desc {
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+    .input-mock {
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--bg-body);
+      font-size: 13.5px;
+      color: var(--text-main);
+    }
+    .input-mock.highlight {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-light);
+    }
+    .pill-radio-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .pill-radio {
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--bg-body);
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+    .pill-radio.active {
+      border-color: #3B82F6;
+      background: #EFF6FF;
+      color: #1E40AF;
+      font-weight: 600;
+    }
+    .option-item-mock {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      background: var(--bg-body);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      margin-bottom: 8px;
+    }
+    .option-item-mock.correct {
+      background: #ECFDF5;
+      border-color: #10B981;
+    }
+    .correct-radio-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding-right: 12px;
+      border-right: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 700;
+      color: #065F46;
+    }
+    .option-letter {
+      font-family: monospace;
+      font-weight: 700;
+      width: 24px;
+      color: var(--text-light);
+    }
+    .toggle-switch-mock {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+    .switch-track {
+      width: 40px;
+      height: 22px;
+      background: #10B981;
+      border-radius: 20px;
+      position: relative;
+    }
+    .switch-thumb {
+      width: 16px;
+      height: 16px;
+      background: #FFF;
+      border-radius: 50%;
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    .interactive-guide-step {
+      border-left: 3px solid var(--primary);
+      padding-left: 18px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="app-container">
+  
+  <!-- Left Sidebar Navigation (GitBook / CodeCanyon Style) -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="brand-badge">Q</div>
+      <div class="brand-info">
+        <h2>Quizs Documentation</h2>
+        <span>Arknox</span>
+      </div>
+    </div>
+
+    <div class="sidebar-search">
+      <div class="search-input-wrap">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="docSearch" class="search-input" placeholder="Search guides & steps...">
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <!-- Getting Started Group -->
+      <div class="nav-group">
+        <div class="nav-group-title">Introduction & Overview</div>
+        <a class="nav-item active" data-target="overview">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span class="nav-text">Project Overview & Features</span>
+        </a>
+        <a class="nav-item" data-target="requirements">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+          <span class="nav-text">Server & System Requirements</span>
+        </a>
+      </div>
+
+      <!-- Installation & Server Hosting -->
+      <div class="nav-group">
+        <div class="nav-group-title">Server Setup & Installation</div>
+        <a class="nav-item" data-target="cpanel-setup">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+          <span class="nav-text">cPanel Server Deployment</span>
+        </a>
+        <a class="nav-item" data-target="local-terminal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+          <span class="nav-text">Local Terminal / CLI Setup</span>
+        </a>
+      </div>
+
+      <!-- Admin Panel Section -->
+      <div class="nav-group">
+        <div class="nav-group-title">Admin Panel Tour & Customization</div>
+        <a class="nav-item" data-target="admin-login-dash">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+          <span class="nav-text">Admin Login & Dashboard</span>
+        </a>
+        <a class="nav-item" data-target="admin-categories">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+          <span class="nav-text">Categories Management</span>
+        </a>
+        <a class="nav-item" data-target="admin-quizzes">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+          <span class="nav-text">Quizzes & Exam Engine</span>
+        </a>
+        <a class="nav-item" data-target="admin-questions">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          <span class="nav-text">Question Bank (4 Options & Key)</span>
+        </a>
+        <a class="nav-item" data-target="admin-attempts">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          <span class="nav-text">Quiz Attempts & PDF Reports</span>
+        </a>
+        <a class="nav-item" data-target="admin-users">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <span class="nav-text">Users & Streaks Management</span>
+        </a>
+        <a class="nav-item" data-target="admin-notifications">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+          <span class="nav-text">Push Notifications (FCM)</span>
+        </a>
+        <a class="nav-item" data-target="admin-settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          <span class="nav-text">System Settings & Offerwall</span>
+        </a>
+      </div>
+
+      <!-- Mobile Application Group -->
+      <div class="nav-group">
+        <div class="nav-group-title">Mobile Application (Flutter)</div>
+        <a class="nav-item" data-target="mobile-app">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+          <span class="nav-text">Flutter App Setup & API Client</span>
+        </a>
+        <a class="nav-item" data-target="firebase-google">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <span class="nav-text">Firebase & Google Sign-In Fix</span>
+        </a>
+        <a class="nav-item" data-target="monetization">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          <span class="nav-text">Monetization (AdMob & Unity)</span>
+        </a>
+        <a class="nav-item" data-target="build-publish">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span class="nav-text">Compile APK & Play Store (AAB)</span>
+        </a>
+      </div>
+
+      <!-- Legal & Agreement -->
+      <div class="nav-group">
+        <div class="nav-group-title">Legal & Agreement</div>
+        <a class="nav-item" data-target="delivery-agreement">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M15 9.354a4 4 0 1 0 0 5.292"></path></svg>
+          <span class="nav-text">Software Delivery Agreement</span>
+        </a>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <span>Official Arknox Delivery</span>
+      <span style="color: var(--primary); font-weight: 700;">v1.1.0</span>
+    </div>
+  </aside>
+
+  <!-- Main View Area -->
+  <div class="main-wrapper">
+    
+    <!-- Top Header Bar -->
+    <header class="top-bar">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Toggle Navigation">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+        <div class="breadcrumb-nav">
+          <span>Arknox Docs</span> / <strong id="breadcrumbSection" style="color: var(--text-main);">Introduction & Overview / Project Overview</strong>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <button id="themeToggle" class="btn-action">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <span>Dark Mode</span>
+        </button>
+        <button id="printBtn" class="btn-action btn-primary" title="Export this guide as a clean PDF manual">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            <span>Chapter PDF</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Content Sections -->
+    <main class="content-body">
+      
+      <!-- ==========================================
+           SECTION 1: OVERVIEW & PRODUCT HEADER
+           ========================================== -->
+      <section id="overview" class="doc-section active">
+        
+        <!-- Official Arknox Header Banner -->
+        <div class="arknox-doc-header">
+          <img src="assets/images/quizs_logo.png" alt="Quizs Logo" class="arknox-header-logo">
+          <div class="arknox-header-details">
+            <h2>Quizs — Smart work, smarter you</h2>
+            <p><strong>By:</strong> Arknox &nbsp;|&nbsp; <strong>Email:</strong> info@arknox.in</p>
+            <p><strong>Contact:</strong> +91-8787388949 &nbsp;|&nbsp; <strong>Website:</strong> <a href="https://arknox.in" target="_blank" style="color: var(--primary);">www.arknox.in</a></p>
+            <div class="arknox-meta-tags">
+              <span class="meta-tag">UDYAM: UDYAM-TR-02-0007126</span>
+              <span class="meta-tag">ISO 9001:2015: E20240913795</span>
+              <span class="meta-tag">TRADE MARK: 11157137</span>
+              <span class="meta-tag">GST: 16BIHPH4252H1ZE</span>
+            </div>
+          </div>
+        </div>
+
+        <h1>Project Overview & Features</h1>
+        <p class="lead-text">
+          <strong>Quizs</strong> is an advanced, high-performance exam preparation and mock-test platform tailored for competitive aspirants. It combines previous-year question (PYQ) practice with an authentic <strong>NTA-style (National Testing Agency) computer-based test (CBT) simulation</strong> — providing timed, section-wise repeatable tests, live question palettes, instant scoring, and comprehensive answer explanations.
+        </p>
+
+        <p>Developed using the <strong>Laravel PHP framework</strong> for the backend and <strong>Flutter (Dart)</strong> for the cross-platform mobile app, Quizs guarantees enterprise security, safeguarding against SQL injection, XSS attacks, and CSRF vulnerabilities, while delivering ultra-smooth 60fps mobile performance.</p>
+
+        <h2>🛡️ Key Features Matrix</h2>
+
+        <div class="feature-grid">
+          <div class="feature-box">
+            <div class="feature-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+            </div>
+            <h4>Admin Panel Features</h4>
+            <ul>
+              <li>Secure admin authentication panel.</li>
+              <li>100% responsive, high-speed Blade & Tailwind CSS UI.</li>
+              <li>Dashboard with real-time statistics, graphs, and attempt analytics.</li>
+              <li>Category management with icons, hex colors, and status toggles.</li>
+              <li>Quiz engine with difficulty badges, timers, and passing score thresholds.</li>
+              <li>Question Bank supporting 4 options, radio answer selector, and rich explanations.</li>
+              <li>User management: View logs, active streaks, points, and suspension controls.</li>
+              <li>Push notification dispatcher via Firebase Cloud Messaging.</li>
+              <li>Offerwall transactions log & rewards verification engine.</li>
+            </ul>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+            </div>
+            <h4>Mobile Application Features</h4>
+            <ul>
+              <li>100% responsive Flutter codebase for Android and iOS.</li>
+              <li>Authorized login/registration plus <strong>One-Tap Google Sign-In</strong>.</li>
+              <li>Timed NTA computer-based exam simulator with question palette.</li>
+              <li>PYQ practice bank organized by subject, exam, and year.</li>
+              <li>Instant result analysis with explanations for every question.</li>
+              <li>Daily login streaks, attendance rewards, and global leaderboards.</li>
+              <li>Multi-network ad monetization: Google AdMob + Unity LevelPlay.</li>
+              <li>Interactive Offerwall for earning bonus reward points.</li>
+              <li>Firebase push notifications for new tests and study reminders.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>📁 Folder Separation in Your Delivery Package</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Directory</th>
+                <th>Content Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Quiz Application/</strong></td>
+                <td>The complete Flutter mobile application source code (Android & iOS). Ready to open in VS Code / Android Studio, build debug/release APK, and generate Play Store App Bundles (AAB).</td>
+              </tr>
+              <tr>
+                <td><strong>Quiz Application Admin/</strong></td>
+                <td>The full Laravel 12 backend source code, migrations, seeders, and web administration panel with REST APIs.</td>
+              </tr>
+              <tr>
+                <td><strong>Documentation/</strong></td>
+                <td>This self-contained, offline HTML documentation portal containing step-by-step guides, interactive field mockups, and PDF export functionality.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 2: SYSTEM REQUIREMENTS
+           ========================================== -->
+      <section id="requirements" class="doc-section">
+        <h1>Server & System Requirements</h1>
+        <p class="lead-text">
+          Before starting the installation, ensure your hosting server or local workstation satisfies the required technical stack.
+        </p>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Requirement</th>
+                <th>Minimum</th>
+                <th>Recommended</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>PHP Version</strong></td>
+                <td>8.2.0</td>
+                <td>PHP 8.2 or 8.3</td>
+                <td>Required by Laravel 12 framework.</td>
+              </tr>
+              <tr>
+                <td><strong>Database Engine</strong></td>
+                <td>MySQL 8.0+ / MariaDB 10.4+</td>
+                <td>MySQL 8.0+</td>
+                <td>Must support <code>utf8mb4_unicode_ci</code>.</td>
+              </tr>
+              <tr>
+                <td><strong>Web Server</strong></td>
+                <td>Apache 2.4+ / Nginx 1.20+</td>
+                <td>Apache with mod_rewrite</td>
+                <td>Document root must point to <code>public/</code>.</td>
+              </tr>
+              <tr>
+                <td><strong>PHP Extensions</strong></td>
+                <td colspan="3"><code>BCMath</code>, <code>Ctype</code>, <code>cURL</code>, <code>DOM</code>, <code>Fileinfo</code>, <code>JSON</code>, <code>Mbstring</code>, <code>OpenSSL</code>, <code>PCRE</code>, <code>PDO</code>, <code>PDO_MySQL</code>, <code>Tokenizer</code>, <code>XML</code>.</td>
+              </tr>
+              <tr>
+                <td><strong>Flutter SDK</strong></td>
+                <td>Flutter with Dart 3.13.1 or compatible</td>
+                <td>Match pubspec.yaml and the lockfile</td>
+                <td>The app declares Dart SDK ^3.13.1. Verify flutter --version before installing dependencies.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 3: CPANEL SERVER DEPLOYMENT
+           ========================================== -->
+      <section id="cpanel-setup" class="doc-section">
+        <h1>cPanel Server Deployment (Step-by-Step)</h1>
+        <p class="lead-text">
+          The installation of this script is super easy. Follow these sequential steps to install the backend and connect your database on any cPanel hosting server.
+        </p>
+
+        <div class="steps-container">
+          
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="step-title">Create the MySQL Database in cPanel</div>
+              <p>1. Log in to your hosting cPanel account.</p>
+              <p>2. In the search box, type <strong>"database"</strong> and select <strong>"MySQL® Database Wizard"</strong>.</p>
+              <p>3. <strong>Step 1:</strong> Enter your database name (e.g. <code>quizs_db</code>) and click <strong>Next Step</strong>.</p>
+              <p>4. <strong>Step 2:</strong> Create a database user, set a strong password, and click <strong>Create User</strong>.</p>
+              <p>5. <strong>Step 3:</strong> Check the box for <strong>ALL PRIVILEGES</strong>, then scroll down and click <strong>Next Step</strong> to finish.</p>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <div class="step-title">Upload and Extract Backend Source Code</div>
+              <p>1. In cPanel search, type <strong>"file"</strong> and open <strong>File Manager</strong>.</p>
+              <p>2. Navigate into the <code>public_html</code> directory.</p>
+              <p>3. Compress the folder <code>Quiz Application Admin</code> into a zip file on your computer.</p>
+              <p>4. Click <strong>Upload</strong> in File Manager, select the zip file, and wait for the green 100% upload bar.</p>
+              <p>5. Right-click the uploaded zip file and select <strong>Extract</strong>.</p>
+              <p>6. Move all extracted files directly to <code>public_html/</code> so that your web entry point is located at <code>public_html/public/index.php</code>.</p>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <div class="step-title">Configure `.env` Database Credentials</div>
+              <p>In File Manager, right-click the <code>.env</code> file, click <strong>Edit</strong>, and update the database settings with your cPanel values:</p>
+              <div class="code-container">
+                <div class="code-header"><span>.env configuration</span><button class="btn-copy">Copy</button></div>
+                <pre><code>APP_NAME="Quizs"
+APP_ENV=production
+APP_DEBUG=false
+APP_URL=https://yourdomain.com
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=cpaneluser_quizs_db
+DB_USERNAME=cpaneluser_dbuser
+DB_PASSWORD=your_strong_password</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <div class="step-title">Run Migrations & Seed Default Data</div>
+              <p>Via cPanel Terminal or SSH, execute:</p>
+              <div class="code-container">
+                <div class="code-header"><span>terminal</span><button class="btn-copy">Copy</button></div>
+                <pre><code>php artisan migrate --seed
+php artisan storage:link</code></pre>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 4: LOCAL TERMINAL / CLI SETUP
+           ========================================== -->
+      <section id="local-terminal" class="doc-section">
+        <h1>Local Terminal / CLI Setup (Quick Commands)</h1>
+        <p class="lead-text">
+          If you are running the backend locally on XAMPP, Laragon, or an Ubuntu VPS via SSH, use these commands:
+        </p>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span>Terminal / PowerShell</span>
+            <button class="btn-copy">Copy</button>
+          </div>
+          <pre><code># 1. Navigate to backend directory:
+cd "Quiz Application Admin"
+
+# 2. Install PHP packages:
+composer install
+
+# 3. Create .env configuration:
+cp .env.example .env
+php artisan key:generate
+
+# 4. Migrate database and seed default admin + sample quizzes:
+php artisan migrate --seed
+
+# 5. Link public storage for category/quiz images:
+php artisan storage:link
+
+# 6. Compile Tailwind CSS assets & start server:
+npm install && npm run build
+php artisan serve</code></pre>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 5: ADMIN LOGIN & DASHBOARD
+           ========================================== -->
+      <section id="admin-login-dash" class="doc-section">
+        <h1>Admin Login & Dashboard Overview</h1>
+        <p class="lead-text">
+          Accessing the administrative interface and exploring real-time analytics.
+        </p>
+
+        <h2>Default Admin Login Credentials</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Field</th>
+                <th>Default Value</th>
+                <th>Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Login URL</strong></td>
+                <td><code>http://localhost:8000/admin/login</code> (or <code>https://yourdomain.com/admin/login</code>)</td>
+                <td>Web Entry</td>
+              </tr>
+              <tr>
+                <td><strong>Login Email</strong></td>
+                <td><code>admin@quizs.com</code></td>
+                <td>Super Admin</td>
+              </tr>
+              <tr>
+                <td><strong>Login Password</strong></td>
+                <td><code>password123</code></td>
+                <td>Full Access</td>
+              </tr>
+              <tr>
+                <td><strong>Mobile Test User</strong></td>
+                <td><code>user@quizs.com</code> / <code>password123</code></td>
+                <td>REST API User</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Interactive Dashboard Walkthrough</h2>
+        <div class="admin-form-mock">
+          <div class="form-header-mock">
+            <h4>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+              Admin Dashboard Real-Time Metrics
+            </h4>
+            <span style="font-size: 12px; color: var(--primary); font-weight: 700;">LIVE METRICS</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 20px;">
+            <div style="background: #EFF6FF; border: 1px solid #BFDBFE; padding: 14px; border-radius: var(--radius-sm); text-align: center;">
+              <span style="font-size: 12px; color: #1E40AF; font-weight: 600;">Registered Players</span>
+              <div style="font-size: 24px; font-weight: 800; color: #1E40AF; margin-top: 4px;">1,280</div>
+            </div>
+            <div style="background: #ECFDF5; border: 1px solid #A7F3D0; padding: 14px; border-radius: var(--radius-sm); text-align: center;">
+              <span style="font-size: 12px; color: #065F46; font-weight: 600;">Active Quizzes</span>
+              <div style="font-size: 24px; font-weight: 800; color: #065F46; margin-top: 4px;">48</div>
+            </div>
+            <div style="background: #FFFBEB; border: 1px solid #FDE68A; padding: 14px; border-radius: var(--radius-sm); text-align: center;">
+              <span style="font-size: 12px; color: #92400E; font-weight: 600;">Question Bank</span>
+              <div style="font-size: 24px; font-weight: 800; color: #92400E; margin-top: 4px;">650</div>
+            </div>
+            <div style="background: #FDF2F8; border: 1px solid #FBCFE8; padding: 14px; border-radius: var(--radius-sm); text-align: center;">
+              <span style="font-size: 12px; color: #9D174D; font-weight: 600;">Completed Attempts</span>
+              <div style="font-size: 24px; font-weight: 800; color: #9D174D; margin-top: 4px;">5,420</div>
+            </div>
+          </div>
+
+          <div style="background: var(--bg-body); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px;">
+            <strong style="font-size: 13px; display: block; margin-bottom: 8px;">Recent Quiz Attempts Activity</strong>
+            <div style="font-size: 12.5px; display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); padding: 6px 0;">
+              <span>Alex Johnson (user@quizs.com)</span>
+              <span>Solar System Wonders</span>
+              <span style="color: #10B981; font-weight: 700;">Score: 90% (Passed)</span>
+            </div>
+            <div style="font-size: 12.5px; display: flex; justify-content: space-between; padding: 6px 0;">
+              <span>Priya Sharma</span>
+              <span>World Geography Trivia</span>
+              <span style="color: #10B981; font-weight: 700;">Score: 100% (Passed)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 6: CATEGORIES MANAGEMENT
+           ========================================== -->
+      <section id="admin-categories" class="doc-section">
+        <h1>Categories Management</h1>
+        <p class="lead-text">
+          How to create, customize, and manage exam categories in the admin panel.
+        </p>
+
+        <p>In the sidebar, navigate to <strong>Categories</strong> and click <strong>"Create Category"</strong>. The following options must be configured:</p>
+
+        <div class="admin-form-mock">
+          <div class="form-header-mock">
+            <h4>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+              Create Category Form Options (`admin/categories/create`)
+            </h4>
+            <span style="font-size: 12px; color: var(--text-muted);">Blade View</span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group-mock">
+              <label>Category Name <span style="color: #EF4444;">*</span></label>
+              <input type="text" class="input-mock highlight" value="Mathematics & Logic" readonly>
+              <span class="field-desc">The title displayed on cards in the mobile app.</span>
+            </div>
+            <div class="form-group-mock">
+              <label>Slug <span style="color: var(--text-light);">(auto-generated)</span></label>
+              <input type="text" class="input-mock" value="mathematics-logic" readonly style="font-family: monospace;">
+              <span class="field-desc">URL-safe unique identifier.</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group-mock">
+              <label>Accent Color <span style="color: #EF4444;">*</span></label>
+              <div style="display: flex; gap: 8px;">
+                <input type="color" value="#10B981" style="width: 44px; height: 38px; border: none; cursor: pointer; border-radius: 4px;" disabled>
+                <input type="text" class="input-mock" value="#10B981" readonly style="width: 110px; font-family: monospace;">
+              </div>
+              <span class="field-desc">Hex color applied to category cards and badges.</span>
+            </div>
+            <div class="form-group-mock">
+              <label>Display Sort Order</label>
+              <input type="number" class="input-mock" value="1" readonly style="width: 100px;">
+              <span class="field-desc">Order of appearance in the mobile list (1, 2, 3...).</span>
+            </div>
+          </div>
+
+          <div class="form-group-mock" style="margin-bottom: 16px;">
+            <label>Description</label>
+            <textarea class="input-mock" rows="2" readonly>Test your arithmetic, algebra, puzzles, and reasoning skills.</textarea>
+          </div>
+
+          <div class="form-group-mock" style="margin-bottom: 16px;">
+            <label>Category Banner Image (Optional)</label>
+            <input type="text" class="input-mock" value="Choose file: math_category_banner.png" readonly style="color: var(--text-muted);">
+            <span class="field-desc">Recommended dimensions: 800x400 PNG or JPG.</span>
+          </div>
+
+          <div style="border-top: 1px solid var(--border); padding-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+            <div class="toggle-switch-mock">
+              <div class="switch-track"><div class="switch-thumb"></div></div>
+              <span style="font-size: 13.5px; font-weight: 600; color: #065F46;">Category is Active (Visible in Mobile App)</span>
+            </div>
+            <button class="btn-action btn-primary" style="pointer-events: none;">Save Category</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 7: QUIZZES & EXAM ENGINE
+           ========================================== -->
+      <section id="admin-quizzes" class="doc-section">
+        <h1>Quizzes & Exam Engine</h1>
+        <p class="lead-text">
+          How to configure timed quizzes with difficulty ratings, languages, and passing criteria.
+        </p>
+
+        <div class="admin-form-mock">
+          <div class="form-header-mock">
+            <h4>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+              Create Quiz Form Options (`admin/quizzes/create`)
+            </h4>
+            <span style="font-size: 12px; color: var(--text-muted);">Blade View</span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group-mock">
+              <label>Parent Category <span style="color: #EF4444;">*</span></label>
+              <input type="text" class="input-mock" value="Mathematics & Logic" readonly>
+            </div>
+            <div class="form-group-mock">
+              <label>Difficulty Rating <span style="color: #EF4444;">*</span></label>
+              <input type="text" class="input-mock" value="Medium" readonly>
+              <span class="field-desc">Options: Easy, Medium, Hard (determines badge color).</span>
+            </div>
+          </div>
+
+          <div class="form-group-mock" style="margin-bottom: 16px;">
+            <label>Quiz Title <span style="color: #EF4444;">*</span></label>
+            <input type="text" class="input-mock highlight" value="Algebra & Geometry Mock Test 2026" readonly>
+          </div>
+
+          <!-- Language Selector -->
+          <div class="form-group-mock" style="margin-bottom: 16px;">
+            <label>Language Mode <span style="color: #EF4444;">*</span></label>
+            <span class="field-desc" style="margin-bottom: 6px;">Note: Cannot be changed after quiz is created.</span>
+            <div class="pill-radio-group">
+              <div class="pill-radio">
+                <input type="radio" disabled> <span>English only</span>
+              </div>
+              <div class="pill-radio">
+                <input type="radio" disabled> <span>Hindi only</span>
+              </div>
+              <div class="pill-radio active">
+                <input type="radio" checked disabled> <span>✓ Bilingual (English + Hindi)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group-mock">
+              <label>Duration (Minutes) <span style="color: #EF4444;">*</span></label>
+              <input type="number" class="input-mock" value="15" readonly style="width: 120px;">
+              <span class="field-desc">Powers the NTA exam countdown timer in the app.</span>
+            </div>
+            <div class="form-group-mock">
+              <label>Passing Score (%) <span style="color: #EF4444;">*</span></label>
+              <input type="number" class="input-mock" value="60" readonly style="width: 120px;">
+              <span class="field-desc">Minimum score % to unlock passing badge.</span>
+            </div>
+            <div class="form-group-mock">
+              <label>Display Order</label>
+              <input type="number" class="input-mock" value="1" readonly style="width: 120px;">
+            </div>
+          </div>
+
+          <div style="border-top: 1px solid var(--border); padding-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+            <div class="toggle-switch-mock">
+              <div class="switch-track"><div class="switch-thumb"></div></div>
+              <span style="font-size: 13.5px; font-weight: 600; color: #065F46;">Quiz is Active & Playable</span>
+            </div>
+            <button class="btn-action btn-primary" style="pointer-events: none;">Save Quiz</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 8: QUESTION BANK (4 OPTIONS & KEY)
+           ========================================== -->
+      <section id="admin-questions" class="doc-section">
+        <h1>Question Bank (4 Options & Correct Answer Radio)</h1>
+        <p class="lead-text">
+          Author questions with 4 answer choices, designate the correct answer with the radio selector, and provide comprehensive answer explanations.
+        </p>
+
+        <div class="admin-form-mock">
+          <div class="form-header-mock">
+            <h4>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              Create Question Form Options (`admin/questions/create`)
+            </h4>
+            <span style="font-size: 12px; color: var(--text-muted);">Blade View</span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group-mock">
+              <label>Select Parent Quiz <span style="color: #EF4444;">*</span></label>
+              <input type="text" class="input-mock" value="Algebra & Geometry Mock Test 2026" readonly>
+            </div>
+            <div class="form-group-mock">
+              <label>Points Value <span style="color: #EF4444;">*</span></label>
+              <input type="number" class="input-mock" value="10" readonly style="width: 100px;">
+              <span class="field-desc">Score added to player upon answering correctly.</span>
+            </div>
+          </div>
+
+          <div class="form-group-mock" style="margin-bottom: 16px;">
+            <label>Question Text <span style="color: #EF4444;">*</span></label>
+            <textarea class="input-mock highlight" rows="2" readonly>What is the value of x if 2x + 6 = 18?</textarea>
+          </div>
+
+          <!-- Answer Choices -->
+          <div class="form-group-mock" style="margin-bottom: 16px;">
+            <label>Answer Choices (Select Radio for the Correct Answer) <span style="color: #EF4444;">*</span></label>
+            <span class="field-desc" style="margin-bottom: 8px;">The selected radio automatically sets the correct answer key in the scoring engine.</span>
+
+            <div class="option-item-mock">
+              <div class="correct-radio-badge">
+                <input type="radio" disabled> <span>Key</span>
+              </div>
+              <span class="option-letter">A</span>
+              <input type="text" class="input-mock" value="4" readonly style="flex: 1;">
+            </div>
+
+            <div class="option-item-mock correct">
+              <div class="correct-radio-badge" style="color: #065F46;">
+                <input type="radio" checked disabled> <span>Correct ✓</span>
+              </div>
+              <span class="option-letter" style="color: #065F46;">B</span>
+              <input type="text" class="input-mock" value="6" readonly style="flex: 1; border-color: #10B981; font-weight: 700;">
+            </div>
+
+            <div class="option-item-mock">
+              <div class="correct-radio-badge">
+                <input type="radio" disabled> <span>Key</span>
+              </div>
+              <span class="option-letter">C</span>
+              <input type="text" class="input-mock" value="8" readonly style="flex: 1;">
+            </div>
+
+            <div class="option-item-mock">
+              <div class="correct-radio-badge">
+                <input type="radio" disabled> <span>Key</span>
+              </div>
+              <span class="option-letter">D</span>
+              <input type="text" class="input-mock" value="12" readonly style="flex: 1;">
+            </div>
+          </div>
+
+          <div class="form-group-mock" style="margin-bottom: 16px;">
+            <label>Detailed Answer Explanation (Shown on Results Screen)</label>
+            <textarea class="input-mock" rows="2" readonly style="background: #FFFBEB; border-color: #FCD34D; color: #92400E;">Subtract 6 from both sides: 2x = 12. Divide by 2: x = 6. Hence, Option B is correct.</textarea>
+          </div>
+
+          <div style="border-top: 1px solid var(--border); padding-top: 16px; display: flex; justify-content: flex-end;">
+            <button class="btn-action btn-primary" style="pointer-events: none;">Save Question</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 9: QUIZ ATTEMPTS & REPORTS
+           ========================================== -->
+      <section id="admin-attempts" class="doc-section">
+        <h1>Quiz Attempts & PDF Reports</h1>
+        <p class="lead-text">
+          Inspect student test results, download individual attempt summaries, and generate bulk PDF reports.
+        </p>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Student</th>
+                <th>Quiz</th>
+                <th>Questions</th>
+                <th>Score</th>
+                <th>Accuracy</th>
+                <th>Completed At</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Alex Johnson</strong><br><small style="color: var(--text-muted);">user@quizs.com</small></td>
+                <td>Solar System Wonders</td>
+                <td>3 / 3</td>
+                <td><strong>20 / 30</strong></td>
+                <td><span style="color: #10B981; font-weight: 700;">66.7%</span></td>
+                <td>Just now</td>
+                <td><span style="color: var(--primary); font-weight: 600; cursor: pointer;">Download PDF</span></td>
+              </tr>
+              <tr>
+                <td><strong>Priya Sharma</strong><br><small style="color: var(--text-muted);">priya@gmail.com</small></td>
+                <td>World Geography Trivia</td>
+                <td>5 / 5</td>
+                <td><strong>50 / 50</strong></td>
+                <td><span style="color: #10B981; font-weight: 700;">100%</span></td>
+                <td>10 mins ago</td>
+                <td><span style="color: var(--primary); font-weight: 600; cursor: pointer;">Download PDF</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-info">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <div>
+            <strong>Built-in PDF Generator:</strong> The admin panel includes ready-made Blade PDF templates (`summary-pdf.blade.php` and `summary-list-pdf.blade.php`) allowing admins or students to export official scorecards with Arknox watermarks!
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 10: USERS & STREAKS
+           ========================================== -->
+      <section id="admin-users" class="doc-section">
+        <h1>Users & Streaks Management</h1>
+        <p class="lead-text">
+          Monitor registered players, manage streaks, adjust scores, and manage suspension states.
+        </p>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>User Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Total Score</th>
+                <th>Login Streak</th>
+                <th>Status</th>
+                <th>Controls</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Super Admin</strong></td>
+                <td>admin@quizs.com</td>
+                <td><span style="background: #EFF6FF; color: #1E40AF; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700;">ADMIN</span></td>
+                <td>1,200</td>
+                <td>12 Days 🔥</td>
+                <td><span style="color: #10B981; font-weight: 700;">Active</span></td>
+                <td>Edit Profile</td>
+              </tr>
+              <tr>
+                <td><strong>Alex Johnson</strong></td>
+                <td>user@quizs.com</td>
+                <td><span style="background: #F1F5F9; color: #475569; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700;">PLAYER</span></td>
+                <td>350</td>
+                <td>4 Days 🔥</td>
+                <td><span style="color: #10B981; font-weight: 700;">Active</span></td>
+                <td>Manage / Suspend</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 11: PUSH NOTIFICATIONS
+           ========================================== -->
+      <section id="admin-notifications" class="doc-section">
+        <h1>Push Notifications (Firebase Cloud Messaging)</h1>
+        <p class="lead-text">
+          Send broadcast notifications to players announcing new mock tests, daily reminders, and exam tips.
+        </p>
+
+        <div class="admin-form-mock">
+          <div class="form-header-mock">
+            <h4>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+              Send Push Notification Form (`admin/push-notifications/create`)
+            </h4>
+          </div>
+
+          <div class="form-group-mock" style="margin-bottom: 14px;">
+            <label>Notification Title <span style="color: #EF4444;">*</span></label>
+            <input type="text" class="input-mock highlight" value="New NTA Exam Mock Test Live! 🎯" readonly>
+          </div>
+
+          <div class="form-group-mock" style="margin-bottom: 14px;">
+            <label>Message Body <span style="color: #EF4444;">*</span></label>
+            <textarea class="input-mock" rows="3" readonly>Attempt the NEET Physics & Chemistry 2026 practice paper now to test your speed and accuracy!</textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group-mock">
+              <label>Target Audience</label>
+              <input type="text" class="input-mock" value="All Registered Users" readonly>
+            </div>
+            <div class="form-group-mock">
+              <label>Deep Link Action</label>
+              <input type="text" class="input-mock" value="Open Quiz: Mathematics" readonly>
+            </div>
+          </div>
+
+          <div style="border-top: 1px solid var(--border); padding-top: 16px; display: flex; justify-content: flex-end;">
+            <button class="btn-action btn-primary" style="pointer-events: none;">Dispatch via Firebase</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 12: SYSTEM SETTINGS & OFFERWALL
+           ========================================== -->
+      <section id="admin-settings" class="doc-section">
+        <h1>System Settings & Offerwall Configuration</h1>
+        <p class="lead-text">
+          Managing SMTP email delivery, Firebase credentials, and the Web Offerwall rewards engine.
+        </p>
+
+        <h3>1. Web Offerwall (Unity / Tapjoy Rewards Engine)</h3>
+        <p>The application supports Unity Web Offerwall for rewarding players with bonus tokens. Configure these values in your backend <code>.env</code> file:</p>
+
+        <div class="code-container">
+          <div class="code-header"><span>.env Offerwall Settings</span><button class="btn-copy">Copy</button></div>
+          <pre><code>OFFERWALL_ENABLED=true
+OFFERWALL_SDK_KEY="your-web-offerwall-sdk-key"
+OFFERWALL_PLACEMENT="#WebOfferwall"
+OFFERWALL_CALLBACK_SECRET="your-app-specific-callback-secret"
+OFFERWALL_CALLBACK_MODE=hmac_sha256</code></pre>
+        </div>
+
+        <p><strong>Callback Endpoint:</strong> <code>https://yourdomain.com/api/offerwall/callback/unity</code></p>
+        <p>The backend automatically verifies each offer callback with HMAC SHA-256 signatures before crediting points to the player's account.</p>
+      </section>
+
+      <!-- ==========================================
+           SECTION 13: FLUTTER APP SETUP
+           ========================================== -->
+      <section id="mobile-app" class="doc-section">
+        <h1>Flutter Mobile Application Setup</h1>
+        <p class="lead-text">
+          Configuring and running the mobile app located in <strong><code>Quiz Application/</code></strong>.
+        </p>
+
+        <div class="steps-container">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="step-title">Open Project in VS Code or Android Studio</div>
+              <p>Open the <code>Quiz Application</code> folder.</p>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <div class="step-title">Install Dependencies</div>
+              <div class="code-container">
+                <div class="code-header"><span>bash</span><button class="btn-copy">Copy</button></div>
+                <pre><code>flutter pub get</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <div class="step-title">Configure API Base URL</div>
+              <p>Open <code>lib/services/api_client.dart</code> and set your live backend endpoint:</p>
+              <div class="code-container">
+                <div class="code-header"><span>lib/services/api_client.dart</span><button class="btn-copy">Copy</button></div>
+                <pre><code>class ApiClient {
+  ApiClient._();
+  static final ApiClient instance = ApiClient._();
+
+  // Set your active production server URL:
+  static const String baseUrl = 'https://quizs.in/api';
+  
+  // For Local Emulator testing use: 'http://10.0.2.2:8000/api'</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <div class="step-title">Run in Debug Mode</div>
+              <div class="code-container">
+                <div class="code-header"><span>bash</span><button class="btn-copy">Copy</button></div>
+                <pre><code>flutter run</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 14: FIREBASE & GOOGLE SIGN-IN FIX
+           ========================================== -->
+      <section id="firebase-google" class="doc-section">
+        <h1>Firebase & Google Sign-In Fix (SHA-1 Setup)</h1>
+        <p class="lead-text">
+          How to register cryptographic SHA-1 fingerprints in Firebase Console to prevent Google Sign-In Error 10.
+        </p>
+
+        <div class="callout callout-warning">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          <div>
+            <div class="callout-title">Why Google Sign-In Fails (Error 10)</div>
+            <div class="callout-text">
+              When an app is signed with a key whose SHA-1 is not registered in Firebase, Google instantly rejects the OAuth handshake. You must register both the <strong>Debug SHA-1</strong> and the <strong>Google Play Store Production SHA-1</strong>.
+            </div>
+          </div>
+        </div>
+
+        <h3>1. Get Debug SHA-1</h3>
+        <div class="code-container">
+          <div class="code-header"><span>bash / powershell</span><button class="btn-copy">Copy</button></div>
+          <pre><code>cd "Quiz Application/android"
+./gradlew signingReport</code></pre>
+        </div>
+        <p>Copy the SHA-1 fingerprint under <code>Variant: debug</code>.</p>
+
+        <h3>2. Get Google Play Production SHA-1</h3>
+        <p>In Google Play Console, go to <strong>Release -> Setup -> App Integrity -> App signing key certificate</strong> and copy the SHA-1.</p>
+
+        <h3>3. Add to Firebase</h3>
+        <p>Go to <strong>Firebase Console -> Project Settings -> Your Android Apps -> Add Fingerprint</strong> and paste both keys. Download the updated <code>google-services.json</code> and place it in <code>Quiz Application/android/app/google-services.json</code>.</p>
+      </section>
+
+      <!-- ==========================================
+           SECTION 15: MONETIZATION
+           ========================================== -->
+      <section id="monetization" class="doc-section">
+        <h1>Ad Monetization (AdMob & Unity LevelPlay)</h1>
+        <p class="lead-text">
+          Maximize application revenue with integrated AdMob banners, Unity LevelPlay rewarded video ads, and the Web Offerwall.
+        </p>
+
+        <h2>Google AdMob Setup</h2>
+        <p>Update your AdMob Application ID in <code>Quiz Application/android/app/src/main/AndroidManifest.xml</code>:</p>
+        <div class="code-container">
+          <div class="code-header"><span>AndroidManifest.xml</span></div>
+          <pre><code>&lt;meta-data
+    android:name="com.google.android.gms.ads.APPLICATION_ID"
+    android:value="ca-app-pub-YOUR_ADMOB_APP_ID~1234567890"/&gt;</code></pre>
+        </div>
+
+        <h2>Unity LevelPlay Payout & Monetization Rules</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Rule</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Payout Cycle</strong></td>
+                <td>Net 60 (e.g. September earnings are disbursed in late November).</td>
+              </tr>
+              <tr>
+                <td><strong>Minimum Threshold</strong></td>
+                <td>$100 USD (balances under $100 roll over automatically).</td>
+              </tr>
+              <tr>
+                <td><strong>Payment Methods</strong></td>
+                <td>Direct Bank Wire Transfer (INR credit via IFSC/SWIFT) or PayPal via Tipalti.</td>
+              </tr>
+              <tr>
+                <td><strong>Recommended Frequency</strong></td>
+                <td>1 interstitial every 2–3 minutes; 5–10 rewarded ads per user per day.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECTION 16: BUILD & PUBLISH
+           ========================================== -->
+      <section id="build-publish" class="doc-section">
+        <h1>Compiling APK & Play Store (AAB)</h1>
+        <p class="lead-text">
+          How to build production-ready APK binaries for direct device testing and Google Play Store App Bundles (AAB).
+        </p>
+
+        <h3>1. Direct Release APK</h3>
+        <div class="code-container">
+          <div class="code-header"><span>bash</span><button class="btn-copy">Copy</button></div>
+          <pre><code>cd "Quiz Application"
+flutter build apk --release</code></pre>
+        </div>
+        <p>Binary generated at: <code>Quiz Application/build/app/outputs/flutter-apk/app-release.apk</code></p>
+
+        <h3>2. Google Play Store App Bundle (AAB)</h3>
+        <div class="code-container">
+          <div class="code-header"><span>bash</span><button class="btn-copy">Copy</button></div>
+          <pre><code>cd "Quiz Application"
+flutter build appbundle</code></pre>
+        </div>
+        <p>Bundle generated at: <code>Quiz Application/build/app/outputs/bundle/release/app-release.aab</code></p>
+      </section>
+
+      <!-- ==========================================
+           SECTION 17: DELIVERY AGREEMENT & LEGAL
+           ========================================== -->
+      <section id="delivery-agreement" class="doc-section">
+        <h1>Software Delivery Agreement & Copyright Notice</h1>
+        <p class="lead-text">
+          Official Software Delivery Agreement, Intellectual Property Attribution, and Commercial License Terms.
+        </p>
+
+        <div class="arknox-doc-header">
+          <div class="arknox-header-details">
+            <h2 style="color: var(--primary);">Document No: SDA-ARKNOX-2026-09001</h2>
+            <p><strong>Date:</strong> 02 September 2026 &nbsp;|&nbsp; <strong>Quotation Ref:</strong> ARKNOX/QT/2026-09/001</p>
+            <p><strong>Developer/Licensor:</strong> Arknox &nbsp;|&nbsp; <strong>Client/Licensee:</strong> Krishna (krishnar8111@gmail.com)</p>
+          </div>
+        </div>
+
+        <h2>1. Parties to the Agreement</h2>
+        <p><strong>Developer / Licensor:</strong><br>
+        Arknox<br>
+        UDYAM: UDYAM-TR-02-0007126 | ISO 9001:2015: E20240913795 | Trademark: 11157137 | GST: 16BIHPH4252H1ZE<br>
+        Registered Office: KHATIYAN NO-2785, BLOCK TEPANIYA RD BLOCK, NEAR PUMP HOUSE, DHAJANAGAR GUAN, KHAMAR BARI, Udaipur, Gomati, Tripura - 799114<br>
+        Email: info@arknox.in | Phone: +91-8787388949
+        </p>
+
+        <p><strong>Client / Licensee:</strong><br>
+        Krishna (Email: krishnar8111@gmail.com | Phone: +91 77888 72183)<br>
+        Product: Quizs - Smart work smarter you (Mobile App & Admin Backend)
+        </p>
+
+        <h2>2. Grant of License & Ownership Transfer</h2>
+        <ol>
+          <li><strong>Commercial Usage Rights:</strong> The Client is granted perpetual, unrestricted, worldwide commercial rights to deploy, operate, customize, and monetize the Quizs application across public app stores (Google Play Store and Apple App Store) and private hosting servers.</li>
+          <li><strong>Source Code Ownership:</strong> The full delivered codebase (Flutter Mobile Application, Laravel 12 Backend & Web Admin Panel, and database schemas) is transferred to the Client for business operations, maintenance, and future feature expansions.</li>
+          <li><strong>Restrictions:</strong> Raw redistribution or marketplace resale of the uncompiled source code template under Arknox's name is prohibited without express written consent.</li>
+          <li><strong>15-Day Warranty & Support:</strong> Arknox provides 15 days of complimentary bug-fixing support starting from the formal handover date covering agreed deliverables.</li>
+        </ol>
+
+        <h2>3. Developer Contact Information</h2>
+        <ul>
+          <li><strong>Company:</strong> Arknox</li>
+          <li><strong>Official Website:</strong> <a href="https://arknox.in" target="_blank" style="color: var(--primary);">www.arknox.in</a></li>
+          <li><strong>Support Email:</strong> <a href="mailto:info@arknox.in">info@arknox.in</a></li>
+          <li><strong>Helpline:</strong> +91-8787388949</li>
+          <li><strong>Business Hours:</strong> Monday to Friday, 9:00 AM to 6:00 PM IST</li>
+        </ul>
+      </section>
+
+      <!-- Bottom Step-by-Step Navigation Buttons (GitBook Style) -->
+      <footer class="page-nav-footer">
+        <button class="nav-page-btn prev" style="display: none;">
+          <span class="btn-label">← Previous</span>
+        </button>
+        <button class="nav-page-btn next">
+          <span class="btn-label">Server & System Requirements →</span>
+        </button>
+      </footer>
+
+    </main>
+  </div>
+</div>
+
+<script src="assets/js/screenshots.js"></script>
+  <script src="assets/js/guide-content.js"></script>
+  <script src="assets/js/guide-actions.js"></script>
+  <script src="assets/js/guide.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/pdf-manifest.js"></script>
+<script src="assets/js/pdf-reader.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">Quizs cPanel deployment setup map</title>
+  <desc id="desc">Illustrative setup diagram: create a database, upload the Laravel project outside the public web root, point the domain to its public folder, configure environment settings, and run deployment commands.</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#b83e00"/></marker></defs>
+  <rect width="1200" height="620" rx="16" fill="#f8fafc"/>
+  <g font-family="Arial,sans-serif" fill="#172033">
+    <text x="46" y="56" font-size="28" font-weight="700">cPanel deployment: connect the parts</text>
+    <text x="46" y="88" font-size="16" fill="#586577">Illustrative setup map · not a screenshot of a live hosting account</text>
+    <g fill="#fff" stroke="#cbd5e1"><rect x="46" y="128" width="510" height="172" rx="10"/><rect x="644" y="128" width="510" height="172" rx="10"/><rect x="46" y="380" width="510" height="170" rx="10"/><rect x="644" y="380" width="510" height="170" rx="10"/></g>
+    <g font-size="21" font-weight="700"><text x="72" y="168">1  Database + database user</text><text x="670" y="168">2  Laravel project files</text><text x="72" y="420">3  Domain document root</text><text x="670" y="420">4  Configure and initialize</text></g>
+    <g font-size="17"><text x="72" y="208">MySQL Database Wizard</text><text x="72" y="238">Assign the user to the app database</text><text x="72" y="268">Record full prefixed names for .env</text><text x="670" y="208">Example: /home/account/quizs/</text><text x="670" y="238">Keep .env and application code private</text><text x="670" y="268">Install Composer dependencies</text><text x="72" y="460">Example: /home/account/quizs/public</text><text x="72" y="490">Only public/ is web-accessible</text><text x="72" y="520">Enable HTTPS for the app domain</text><text x="670" y="460">.env → app key → migrations</text><text x="670" y="490">Storage link → assets → configuration cache</text><text x="670" y="520">Queue/cron → API and app verification</text></g>
+    <g fill="none" stroke="#b83e00" stroke-width="3" marker-end="url(#arrow)"><path d="M557 215H635"/><path d="M899 302V341H301V371"/><path d="M557 465H635"/></g>
+    <text x="46" y="591" font-size="15" fill="#586577">Hosting labels and permitted paths vary. Confirm the document root before uploading credentials.</text>
+  </g>
+</svg>

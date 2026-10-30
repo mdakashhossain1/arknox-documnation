@@ -1,0 +1,17 @@
+.pdf-reader { display: none; }
+.pdf-reader-mode .pdf-reader { display: block; }
+.pdf-reader-mode .doc-section,.pdf-reader-mode .page-nav-footer { display: none !important; }
+.pdf-reader-mode .content-body { max-width: 1000px; padding: 24px 28px 70px; }
+.pdf-reader-toolbar { position: sticky; top: 64px; z-index: 8; display: flex; align-items: center; gap: 10px; padding: 12px 16px; margin-bottom: 20px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-surface); color: var(--text-main); font-size: 12px; }
+.pdf-reader-toolbar > span { margin-right: auto; }
+.pdf-reader-toolbar label { display: flex; align-items: center; gap: 8px; }
+.pdf-reader-toolbar input { width: 60px; padding: 6px; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-body); color: var(--text-main); }
+.pdf-reader-toolbar button,.pdf-view-toggle { border: 1px solid var(--border); border-radius: 4px; background: var(--bg-surface); color: var(--text-main); cursor: pointer; padding: 7px 10px; }
+.pdf-view-toggle { width: 100%; font-size: 11px; margin-top: 9px; }
+.pdf-page { width: min(100%, 794px); margin: 0 auto 24px; scroll-margin-top: 130px; }
+.pdf-page img { width: 100%; height: auto; display: block; margin: 0; border: 1px solid #d9d9df; border-radius: 0; background: white; box-shadow: 0 2px 8px rgba(20, 25, 40, .06); }
+.pdf-page figcaption { text-align: center; font-size: 11px; padding: 8px 0 0; color: var(--text-muted); }
+body:not(.pdf-reader-mode) .doc-section { position: relative; isolation: isolate; }
+body:not(.pdf-reader-mode) .doc-section::before { content: ''; position: absolute; inset: 0; z-index: -1; opacity: .05; background: url('../images/official/arknox-watermark.png') center / min(75%, 475px) auto no-repeat; pointer-events: none; }
+@media(max-width: 800px) { .pdf-reader-mode .content-body { padding: 14px 12px 50px; } .pdf-reader-toolbar { padding: 9px; gap: 6px; font-size: 10px; } .pdf-reader-toolbar input { width: 46px; } .top-actions { gap: 5px; } .top-actions .btn-action { padding: 7px 8px; font-size: 11px; } }
+@media print { .pdf-reader-toolbar,.pdf-view-toggle,.pdf-page figcaption { display: none !important; } .pdf-reader-mode .pdf-reader { display: block; } .pdf-reader-mode .pdf-page { width: 100%; margin: 0; break-after: page; } .pdf-reader-mode .pdf-page img { border: 0; box-shadow: none; } body:not(.pdf-reader-mode) .doc-section:not(.active) { display: none !important; } body:not(.pdf-reader-mode) .doc-section.active { break-after: auto; } }

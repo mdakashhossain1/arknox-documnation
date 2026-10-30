@@ -1,0 +1,7 @@
+interface:
+  display_name: "Arknox Documentation"
+  short_description: "Build branded project guides with offline PDF downloads"
+  icon_large: "./assets/preview.png"
+  default_prompt: "Use $artifact-template-arknox-documentation to create verified English project documentation with the Arknox format, annotated screenshots, offline reader, and full and chapter PDFs."
+policy:
+  allow_implicit_invocation: true
